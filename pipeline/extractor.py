@@ -60,9 +60,9 @@ def save_to_neptune(post_id, entities, relations, claims, cluster_identifier, re
         # Get the Neptune cluster endpoint
         response = neptune.describe_db_clusters(DBClusterIdentifier=cluster_identifier)
         endpoint = response['DBClusters'][0]['Endpoint']
-
+        print(f"Endpoint: {endpoint}")
         neptune_endpoint = f"wss://{endpoint}:8182/gremlin"
-
+        print(neptune_endpoint)
 
         graph = Graph()
         remote_connection = DriverRemoteConnection(neptune_endpoint, 'g', ssl_context=None)
