@@ -1,0 +1,5 @@
+llama-index==0.12.25
+llama-index-llms-bedrock
+llama-index-graph-stores-neptune
+pandas
+gremlinpython
