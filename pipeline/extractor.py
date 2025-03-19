@@ -109,4 +109,3 @@ def process_post(post_id):
     print(relations)
     print(claims)
     save_to_neptune(post_id, entities, relations, claims, cluster_identifier)
-process_post(1)
