@@ -65,7 +65,7 @@ def save_to_neptune(post_id, entities, relations, claims, cluster_identifier, re
         print(neptune_endpoint)
 
         graph = Graph()
-        remote_connection = DriverRemoteConnection(neptune_endpoint, 'g', ssl_context=None)
+        remote_connection = DriverRemoteConnection(neptune_endpoint, 'g')
         g = graph.traversal().withRemote(remote_connection)
 
         # Add Post node
@@ -92,7 +92,7 @@ def save_to_neptune(post_id, entities, relations, claims, cluster_identifier, re
             try:
                 remote_connection.close()
                 if hasattr(remote_connection, '_client') and hasattr(remote_connection._client, '_client_session'):
-                    remote_connection._client._client_session.close() #explicitly close the aiohttp session.
+                    remote_connection._client._client_session.close()
             except Exception as close_error:
                 print(f"Error closing connection: {close_error}")
 
