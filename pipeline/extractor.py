@@ -61,8 +61,7 @@ def save_to_neptune(post_id, entities, relations, claims, cluster_identifier, re
         response = neptune.describe_db_clusters(DBClusterIdentifier=cluster_identifier)
         endpoint = response['DBClusters'][0]['Endpoint']
 
-        neptune_endpoint = f"wss://{endpoint}:8182/test"
-        # neptune_endpoint = 'wss://localhost:9000/gremlin'
+        neptune_endpoint = f"wss://{endpoint}:8182/gremlin"
 
 
         graph = Graph()
